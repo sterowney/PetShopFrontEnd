@@ -1,17 +1,41 @@
 (function () {
 
-    var indexController = function ($scope, $log) {
+    var indexController = function ($scope, $http, NgTableParams, petFactory, $sessionStorage, $httpParamSerializerJQLike, $location) {
 
-      $scope.testing = 'If you can see this, then angular is working! Congrats!!!';
+      $scope.$storage = $sessionStorage;
 
-      $log.log('  _______ _            ____  _               _____      _          _');
-      $log.log(' |__   __| |          |  _ \\| |             / ____|    | |        (_)');
-      $log.log('    | |  | |__   ___  | |_) | |_   _  ___  | |     __ _| |__  _ __ _  ___');
-      $log.log('    | |  | \'_ \\ / _ \\ |  _ <| | | | |/ _ \\ | |    / _` | \'_ \\| \'__| |/ _ \\ ');
-      $log.log('    | |  | | | |  __/ | |_) | | |_| |  __/ | |___| (_| | |_) | |  | | (_) |');
-      $log.log('    |_|  |_| |_|\\___| |____/|_|\\__,_|\\___|  \\_____\\__,_|_.__/|_|  |_|\\___/');
-      $log.log('%c Welcome to The Blue Cabrio - Thanks for checking our console out ;)', 'font-weight:bold; color:white; background-color:navy');
+      $scope.logout = function() {
+        delete $scope.$storage.authenticated;
+        delete $scope.$storage.token;
+        delete $scope.$storage.user;
+      };
 
+      $scope.login = function() {
+
+          $http({
+            method: 'POST',
+            url: 'http://localhost:8080/oauth/token',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: $httpParamSerializerJQLike({
+              client_id: 'petshop',
+              grant_type: 'password',
+              scope: 'petshop',
+              username: $scope.username,
+              password: $scope.password
+            })
+
+          }).then(function success(response) {
+
+              $scope.$storage.authenticated = true;
+              $scope.$storage.token = response.data;
+
+              $location.path('/pets');
+
+          }, function error(e) {
+              alert('Unable to log in');
+              delete $scope.$storage.authenticated;
+          });
+      };
 
     };
 

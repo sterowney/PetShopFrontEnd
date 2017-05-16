@@ -39,6 +39,8 @@
     "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.8",
     "foundation-sites": "^6.2.4",
-    "moment": "^2.15.2"
+    "moment": "^2.15.2",
+    "ng-table": "^3.0.1",
+    "ngstorage": "^0.3.11"
   }
 }

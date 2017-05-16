@@ -92,13 +92,18 @@ module.exports = function (grunt) {
             angular_js: {
                 src: [
                   'node_modules/angular/angular.js',
-                  'node_modules/angular-*/angular-*.min.js'],
+                  'node_modules/angular-*/angular-*.min.js',
+                  'node_modules/ng-table/bundles/ng-table.min.js',
+                  'node_modules/ngstorage/ngStorage.js'
+                ],
                 dest: 'dist/js/angular.js'
             },
             angular_js_prod: {
                 src: [
                   'node_modules/angular/angular.min.js',
-                  'node_modules/angular-*/angular-*.min.js'
+                  'node_modules/angular-*/angular-*.min.js',
+                  'node_modules/ng-table/bundles/ng-table.min.js',
+                  'node_modules/ngstorage/ngStorage.js'
                 ],
                 dest: 'dist/js/angular.js'
             },

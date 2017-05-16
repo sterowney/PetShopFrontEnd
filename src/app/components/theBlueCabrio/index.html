@@ -1,6 +1,46 @@
-<h1>The Blue Cabrio</h1>
-{{testing}}
+<div ng-controller="indexController">
 
-<ul>
-  <li><a ng-href="/#/basic">Foundation Basic template</a></li>
-</ul>
+  <div class="title-bar">
+    <div class="title-bar-left">
+      <span class="title-bar-title">Pet Store</span>
+    </div>
+    <div class="title-bar-right">
+      <button ng-show="$storage.authenticated" class="button" ng-click="logout()">Logout</button>
+    </div>
+  </div>
+
+  <br />
+
+  <div>
+
+    <form name="loginForm" ng-show="!$storage.authenticated" ng-submit="login()">
+      <div class="row">
+        <div class="small-12 medium-6 large-4 columns">
+          <label>Username
+            <input ng-model="username" name="username" type="text" placeholder="Enter your username..." required>
+          </label>
+        </div>
+        <div class="small-12 medium-6 large-4 columns">
+          <label>Password
+            <input ng-model="password" name="password" type="password" placeholder="Enter your password..." required>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="callout">
+        <h5>User Info:</h5>
+        <p>username: <strong>a</strong> password: <strong>password</strong> can only view pets</p>
+        <p>username: <strong>b</strong> password: <strong>password</strong> has full access to edit</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -19,6 +19,8 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-*/angular-*.js',
       'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/ng-table/bundles/ng-table.min.js',
+      'node_modules/ngstorage/ngStorage.js',
       'src/app/app.js',
       'src/app/**/*Module.js',
       'src/app/**/*Filter.js',

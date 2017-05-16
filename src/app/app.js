@@ -2,7 +2,9 @@
 
     angular.module('theBlueCabrio', [
         'ngRoute',
-        'ngSanitize'
+        'ngSanitize',
+        'ngTable',
+        'ngStorage'
       ]);
 
     /**
@@ -18,15 +20,16 @@
         templateUrl: 'views/index.html',
         controller: 'indexController'
       })
-      .when('/basic', {
-          templateUrl: 'views/basic.html'
+      .when('/pets', {
+        templateUrl: 'views/pet.html',
+        controller: 'petController'
       })
       .otherwise({
         templateUrl: 'views/404.html'
       });
 
     };
-    
+
     /**
     * Sets up application configuration
     */

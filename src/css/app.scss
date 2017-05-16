@@ -6,7 +6,18 @@
 // include flex
 @include foundation-everything(true);
 
-// layout components
-@import "sass/components/layout/header";
-@import "sass/components/layout/footer";
-@import "sass/components/layout/nav";
+@import "../../node_modules/ng-table/bundles/ng-table.min";
+
+.btn {
+  @include button-base;
+  float: right;
+
+  &.active {
+    @include button-style;
+  }
+}
+
+li.page-item.active {
+  @include button-style;
+  color: white;
+}

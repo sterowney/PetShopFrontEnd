@@ -1,17 +1,17 @@
-# The Blue Cabrio
-
-### Status
-[![Build Status](https://travis-ci.org/thebluecabrio/angular1-template-with-foundation6.png)](https://travis-ci.org/thebluecabrio/angular1-template-with-foundation6)
-
-This is a template for angular 1.5.8 with sass and foundation sites 6
+# Pet Shop Front End
 
 ## Get started
 
-1. `git clone git@github.com:thebluecabrio/angular1-template-with-foundation6.git myproject` - clone project
-2. `cd myproject`
-3. `npm install -g grunt-cli` - install grunt cli on command line
-4. `npm install` - install npm dependencies
-5. `grunt develop` - builds project, opens browser with welcome page, and watches files for changes
+Requirements: Node installed on your machine, I used v7.5.0.
+
+1. clone project
+2. cd into directory
+1. `npm install -g grunt-cli` - install grunt cli on command line
+2. `npm install` - install npm dependencies
+3. `grunt develop` - builds project, opens browser with welcome page, and watches files for changes
+4. Navigate to http://localhost:4000/ in your browser
+
+Make sure you have https://github.com/sterowney/PetShopRestService running on localhost:8080
 
 ### Developing
 

@@ -1,5 +1,9 @@
 # Pet Shop Front End
 
+App deployed here:
+Front End - http://petshopapp.thebluecabrio.com/
+Back End - http://petshopapi.thebluecabrio.com/
+
 ## Get started
 
 Requirements: Node installed on your machine, I used v7.5.0.

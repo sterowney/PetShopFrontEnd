@@ -1,0 +1,120 @@
+<div ng-controller="petController">
+
+  <div class="title-bar">
+    <div class="title-bar-left">
+      <span class="title-bar-title">Pet Store</span>
+    </div>
+    <div class="title-bar-right">
+      <button ng-show="$storage.authenticated" class="button" ng-click="logout()">Logout</button>
+    </div>
+  </div>
+
+  <br />
+
+    <div class="row">
+
+      <div class="small-12 columns">
+
+        <form name="petForm" ng-submit="updatePet(pet)">
+          <input type="hidden" ng-model="pet.id" name="id" />
+          <div class="row">
+            <div class="small-12 columns">
+              <label>Name
+                <input ng-model="pet.name" name="name" type="text" placeholder="Name..." required>
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>Status
+                <select ng-model="pet.status" name="status" ng-options="status for status in statuses" required>
+                  <option value="">---Please select---</option>
+                </select>
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>Category
+                <select ng-model="pet.category.id" name="category" ng-options="category.id as category.name for category in categories" required>
+                  <option value="">---Please select---</option>
+                </select>
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>Photo Url
+                <input ng-model="pet.photoUrls[0].name" name="photoUrl" type="text" placeholder="Photo Url..." required>
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>Tag
+                <input ng-model="pet.tags[0].name" name="tag" type="text" placeholder="Tag..." required>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <input type="submit" class="button" value="Save">
+              <input type="reset" ng-click="reset()" class="hollow button secondary" value="Cancel">
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+
+        <div class="small-6 columns">
+            <h4>
+                <span id="people-results-count" ng-if="petGridTable.total() > 0">{{petGridTable.total()}}</span>
+                <ng-pluralize ng-if="! loading" count="petGridTable.total()"
+                              when="{'0': 'No pets', 'one': ' pet', 'other': ' pets'}">
+                </ng-pluralize>
+            </h4>
+        </div>
+    </div>
+
+    <div class="row">
+
+      <div class="small-12 columns">
+
+        <div class="table-container clearfix">
+
+            <div class="tabler-loader" ng-show="loading">
+                <div class="table-loader-txt">
+                    <img src="/img/default.gif" alt="loading" /> Loading Data
+                </div>
+            </div>
+
+            <table ng-show="!loading" ng-table="petGridTable" show-filter="true" sortable="true">
+
+                <tr ng-repeat="pet in $data" class="row-selectable">
+                    <td title="'Name'" sortable="'name'" filter="{ name: 'text'}">
+                        {{pet.name}}
+                    </td>
+                    <td title="'Status'" sortable="'status'">
+                        {{pet.status}}
+                    </td>
+                    <td data-title="'Category'" sortable="'category.name'">
+                        {{pet.category.name}}
+                    </td>
+                    <td data-title="'Photos'">
+                        <ul class="no-bullet">
+                          <li ng-repeat="photo in pet.photoUrls track by $index"><a href="{{photo.name}}" target="_blank">Photo {{$index + 1}}</a></li>
+                        </ul>
+                    </td>
+                    <td data-title="'Tags'">
+                        <ul class="no-bullet">
+                          <li ng-repeat="tag in pet.tags"><span class="label secondary">{{tag.name}}</span></li>
+                        </ul>
+                    </td>
+                    <td data-title="'Action'">
+                        <span class="pet-actions"><a ng-click="editPet(pet)">Edit</a> | <a ng-click="deletePet(pet)">Delete</a></span>
+                    </td>
+                </tr>
+
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
